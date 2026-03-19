@@ -1,6 +1,6 @@
 workflows:
   android-apk:
-    name: Build Android APK (Capacitor)
+    name: Rabbit Buddy
 
     max_build_duration: 60
 
