@@ -12,13 +12,17 @@ export default defineConfig(({ mode }) => ({
     target: "ES2020",
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: [
-            "react",
-            "react-dom",
-            "react-router-dom",
-          ],
-          capacitor: ["@capacitor/core", "@capacitor/android"],
+        manualChunks: (id) => {
+          // Separar vendor chunks para melhor cache
+          if (id.includes("node_modules")) {
+            if (id.includes("react")) {
+              return "vendor-react";
+            }
+            if (id.includes("@capacitor")) {
+              return "vendor-capacitor";
+            }
+            return "vendor";
+          }
         },
       },
     },
