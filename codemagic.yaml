@@ -1,12 +1,14 @@
 workflows:
   android-apk:
-    name: Rabbit Buddy
+    name: Rabbit - Android APK
 
-    max_build_duration: 60
+    max_build_duration: 120
 
     environment:
       node: 22
       java: 21
+      android_sdk:
+        api_level: 34
 
     scripts:
       - name: Install dependencies
@@ -17,11 +19,11 @@ workflows:
         script: |
           npm run build
 
-      - name: Install Capacitor
+      - name: Verify dist folder
         script: |
-          npm install @capacitor/core @capacitor/cli
+          ls -la dist/
 
-      - name: Add Android platform (if missing)
+      - name: Add Android platform
         script: |
           npx cap add android || true
 
@@ -29,15 +31,20 @@ workflows:
         script: |
           npx cap sync android
 
-      - name: Build APK
+      - name: Build Android APK
         script: |
           cd android
-          ./gradlew assembleDebug
+          chmod +x gradlew
+          ./gradlew assembleRelease
 
     artifacts:
-      - android/app/build/outputs/**/*.apk
+      - android/app/build/outputs/apk/**/*.apk
+      - android/app/build/outputs/bundle/**/*.aab
 
     publishing:
       email:
         recipients:
           - redstarstore0@gmail.com
+        notify:
+          success: true
+          failure: true
