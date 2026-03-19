@@ -1,4 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+
+export default function App() {
+  return (
+    <div style={{ padding: 30 }}>
+      <h1>APP OK</h1>
+      <p>Se você está vendo isso, o crash NÃO é do Android</p>
+    </div>
+  );
+}
+
+
+/*import React, { useEffect, useState } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 
 import Index from "./pages/Index";
@@ -87,4 +99,4 @@ export default function App() {
                                                                                                                                                                                                                                                                                                                                                                                                       </Routes>
                                                                                                                                                                                                                                                                                                                                                                                                           </HashRouter>
                                                                                                                                                                                                                                                                                                                                                                                                             );
-                                                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                            }/*
