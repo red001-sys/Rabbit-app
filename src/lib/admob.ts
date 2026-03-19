@@ -1,4 +1,18 @@
-import { AdMob } from "@capacitor-community/admob";
+export async function initAdMob(): Promise<void> {
+  console.log("AdMob OFF");
+}
+
+export async function showInterstitialAd(): Promise<boolean> {
+  console.log("Interstitial OFF");
+  return false;
+}
+
+export async function showRewardedAd(): Promise<boolean> {
+  console.log("Rewarded OFF");
+  return false;
+}
+
+/*import { AdMob } from "@capacitor-community/admob";
 import { Capacitor } from "@capacitor/core";
 
 const REWARDED_AD_UNIT = "ca-app-pub-3940256099942544/5224354917";
@@ -62,4 +76,4 @@ export async function initAdMob(): Promise<void> {
                                                                                                                                         console.log("Erro ao mostrar rewarded:", error);
                                                                                                                                             return false;
                                                                                                                                               }
-                                                                                                                                              }
+                                                                                                                                              }*/
